@@ -5,6 +5,7 @@
         public static function Alta($context){
             $u = new UsuarioModelo();
             $u -> Nombre = $context['post']['usuario'];
+            $u -> Complete_Name = $context['post']['complete_name'];
             $u -> Password = $context['post']['password'];
             $u -> Guardar();
         }
