@@ -9,5 +9,10 @@
             $u -> Password = $context['post']['password'];
             $u -> Guardar();
         }
+
+        public static function ObtenerTodos(){
+            $u = new UsuarioModelo();
+            return $u -> ObtenerTodos();
+        }
     }
 

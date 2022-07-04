@@ -28,7 +28,7 @@
         public static function Run(){
             self::$Url = $_SERVER['REQUEST_URI'];
             self::$Method = strtolower($_SERVER['REQUEST_METHOD']);
-            $resultado = self::findRoute($Url,$Method);
+            $resultado = self::findRoute(self::$Url,self::$Method);
             if($resultado['notFound']) PageNotFound();
             if($resultado['tipo'] === "vista") self::cargarVista($resultado['vista']);
             if($resultado['tipo'] === "controlador") self::cargarControlador($resultado['funcion']);

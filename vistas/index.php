@@ -13,9 +13,11 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <script src="" async defer></script>
-        <form action="login" method="get">
-            <input type="submit" value="Iniciar Sesión">
-        </form>
+        <header>
+            <a href="/login"><input type="submit" value="Iniciar Sesión"></a>
+        </header>
+        <?php
+            pg_fetch_array(UsuarioControlador::ObtenerTodos());
+        ?>
     </body>
 </html>
