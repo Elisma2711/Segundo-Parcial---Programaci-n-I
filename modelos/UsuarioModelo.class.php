@@ -46,7 +46,7 @@ require "../utils/autoload.php";
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM usuario WHERE id = " . $this ->id;
+            $sql = "SELECT * FROM usuario WHERE id = " . $this -> id;
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> Id = $fila['id'];
@@ -54,9 +54,9 @@ require "../utils/autoload.php";
             $this -> Complete_Name = $fila['complete_name'];
             $this -> BajaLogica = $fila['bajaLogica'];
         }
-
+        // Esta funcion en realidad se le haria un overray con modify ya que hace bajas logicas no fisicas
         public function Eliminar(){
-            $sql = "UPDATE usuario SET bajaLogica = 1 WHERE id = " . $this ->Id;
+            $sql = "UPDATE usuario SET bajaLogica = 1 WHERE id = " . $this -> Id;
             $this -> conexionBaseDeDatos -> query($sql);
         }
 

@@ -7,7 +7,8 @@
     Routes::AddView("/register","register");
     Routes::Add("/register","post","UsuarioControlador::Alta");
     Routes::AddView("/usuarios/alta","register");
-    Routes::AddView("/sesion","sesion");
+    Routes::AddView("/logout","index");
+    Routes::Add("/logout","post","SesionControlador::CerrarSesion");
     
     Routes::Run();
 

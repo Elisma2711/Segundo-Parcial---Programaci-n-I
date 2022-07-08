@@ -14,7 +14,14 @@
     </head>
     <body>
         <header>
-            <a href="/sesion">Sesión</a>
+            <?php if(isset($_SESSION['autenticado'])){ ?>
+                <form action="/logout" method="post">
+                    <input type="submit" value="Cerrar Sesión">
+                </form>
+            <?php ;}
+            else { ?>
+                <a href="index.php"><input type="submit" value="Iniciar Sesión"></a>
+            <?php ;} ?>
         </header>
         <br />
         <br />

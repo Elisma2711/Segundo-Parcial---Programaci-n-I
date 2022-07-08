@@ -4,7 +4,7 @@
     class PublicacionModelo extends Modelo{
         public $Id;
         public $Autor;
-        public $FechaChora;
+        public $FechaHora;
         public $Cuerpo;
         public $BajaLogica;
 
@@ -47,11 +47,11 @@
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> Id = $fila['id'];
-            $this -> Nombre = $fila['username'];
-            $this -> Complete_Name = $fila['complete_name'];
+            $this -> Autor = $fila['autor'];
+            $this -> FechaHora = $fila['fechaHora'];
             $this -> BajaLogica = $fila['bajaLogica'];
         }
-
+        // Esta funcion en realidad se le haria un overray con modify ya que hace bajas logicas no fisicas
         public function Eliminar(){
             $sql = "UPDATE publicacion SET bajaLogica = 1 WHERE id = " . $this ->Id;
             $this -> conexionBaseDeDatos -> query($sql);
