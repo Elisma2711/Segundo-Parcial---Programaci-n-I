@@ -12,7 +12,8 @@
 
         public static function Baja($context){
             $p = new PublicacionModelo($context['post']['id']);
-            $p -> Eliminar();
+            $p -> BajaLogica = 1;
+            $p -> Guardar();
         }
 
         public static function Modificar($context){
@@ -26,6 +27,13 @@
 
         public static function ObtenerTodos(){
             $p = new PublicacionModelo();
-            return $p -> ObtenerTodos();
+            $resultado = array();
+            array_push($resultado,$p -> ObtenerTodos());
+            return $resultado;
+        }
+
+        public static function Obtener($id){
+            $p = new PublicacionModelo($id);
+            return $p;
         }
     }

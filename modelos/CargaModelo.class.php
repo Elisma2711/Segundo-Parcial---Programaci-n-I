@@ -14,7 +14,7 @@
         }
 
         public function Guardar(){
-            if($this -> Id == NULL) $this -> insertar();
+            if($this -> Obtener() == NULL) $this -> insertar();
             else $this -> actualizar();
         }
 
@@ -34,7 +34,7 @@
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM publicacion WHERE id = " . $this -> IdPublicacion;
+            $sql = "SELECT * FROM carga WHERE idPublicacion = " . $this -> IdPublicacion . ";";
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> IdUsuario = $fila['idUsuario'];

@@ -27,6 +27,6 @@
         <div style="color: red;">Credenciales invalidas.</div>
     <?php endif;?>
 
-    
+    <a href="/"><input type="submit" value="Volver"></a>
 </body>
 </html>

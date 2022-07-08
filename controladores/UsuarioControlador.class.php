@@ -17,7 +17,8 @@
 
         public static function Baja($context){
             $u = new UsuarioModelo($context['post']['id']);
-            $u -> Eliminar();
+            $u -> BajaLogica = 1;
+            $u -> Guardar();
         }
 
         public static function Modificar($context){
@@ -27,6 +28,11 @@
             $u -> Password = $context['post']['password'];
             $u -> BajaLogica = $context['post']['bajaLogica'];
             $u -> Guardar();
+        }
+
+        public static function ObtenerPorUsername($usr){
+            $u = new UsuarioModelo();
+            return $u -> ObtenerPorUsername($usr);
         }
     }
 

@@ -18,15 +18,27 @@
                 <form action="/logout" method="post">
                     <input type="submit" value="Cerrar Sesión">
                 </form>
+                <a href="/cargarPublicacion"><input type="submit" value="Cargar Publicacion"></a>
             <?php ;}
             else { ?>
-                <a href="index.php"><input type="submit" value="Iniciar Sesión"></a>
+                <a href="/login"><input type="submit" value="Iniciar Sesión"></a>
             <?php ;} ?>
         </header>
         <br />
         <br />
-        <?php
-            print_r(UsuarioControlador::ObtenerTodos());
-        ?>
+        <table>
+            <?php 
+                $filas = PublicacionControlador::ObtenerTodos();
+                foreach($filas as $fila){
+                    $c = 0;
+                    ?>
+                    <tr>
+                        <th><?php echo PublicacionControlador::Obtener($fila[$c] -> Id) -> Cuerpo; ?></th>
+                        <th><?php echo PublicacionControlador::Obtener($fila[$c] -> Id) -> Autor; ?></th>
+                        <th><?php echo PublicacionControlador::Obtener($fila[$c] -> Id) -> FechaHora; ?></th>
+                    </tr>
+            <?php $c++; } ?>
+        </table>
+        <?php var_dump($_SESSION); ?>
     </body>
 </html>

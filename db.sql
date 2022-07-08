@@ -25,3 +25,10 @@ CREATE TABLE carga(
     FOREIGN KEY (idUsuario) REFERENCES usuario(id),
     FOREIGN KEY (idPublicacion) REFERENCES publicacion(id)
 );
+
+
+/*
+----------- 1                  n ---------------
+| usuario | ------ carga ------- | publicacion |
+-----------                      ---------------
+*/

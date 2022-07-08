@@ -9,6 +9,8 @@
     Routes::AddView("/usuarios/alta","register");
     Routes::AddView("/logout","index");
     Routes::Add("/logout","post","SesionControlador::CerrarSesion");
+    Routes::AddView("/cargarPublicacion","cargarPublicacion");
+    Routes::Add("/cargarPublicacion","post","CargaControlador::Alta");
     
     Routes::Run();
 

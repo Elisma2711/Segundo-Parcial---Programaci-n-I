@@ -41,19 +41,18 @@
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM publicacion 
-            WHERE id = " . $this ->id . "
-            AND bajaLogica = 0;";
+            $sql = "SELECT * FROM publicacion WHERE id = " . $this -> id . ";";
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> Id = $fila['id'];
             $this -> Autor = $fila['autor'];
             $this -> FechaHora = $fila['fechaHora'];
+            $this -> Cuerpo = $fila['cuerpo'];
             $this -> BajaLogica = $fila['bajaLogica'];
         }
-        // Esta funcion en realidad se le haria un overray con modify ya que hace bajas logicas no fisicas
+        // Esta funcion en realidad se le haria un overray con modify ya que debe hacer bajas logicas no fisicas sino se romperia todo
         public function Eliminar(){
-            $sql = "UPDATE publicacion SET bajaLogica = 1 WHERE id = " . $this ->Id;
+            $sql = "DELETE FROM publicacion WHERE id = " . $this -> Id;
             $this -> conexionBaseDeDatos -> query($sql);
         }
 
