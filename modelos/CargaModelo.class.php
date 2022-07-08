@@ -5,10 +5,10 @@
         public $IdUsuario;
         public $IdPublicacion;
 
-        public function __construct($idPub=''){
+        public function __construct($id=''){
             parent::__construct();
-            if($idPub != ""){
-                $this -> id = $idPub;
+            if($id != ""){
+                $this -> id = $id;
                 $this -> Obtener();
             }
         }
@@ -29,12 +29,12 @@
         private function actualizar(){
             $sql = "UPDATE carga SET
             idUsuario = '" . $this -> IdUsuario . "',
-            WHERE idPublicacion = " . $this -> IdPublicacion;
+            WHERE idPublicacion = " . $this -> id;
             $this -> conexionBaseDeDatos -> query($sql);
         }
 
         public function Obtener(){
-            $sql = "SELECT * FROM carga WHERE idPublicacion = " . $this -> IdPublicacion . ";";
+            $sql = "SELECT * FROM carga WHERE idPublicacion = " . $this -> id . ";";
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> IdUsuario = $fila['idUsuario'];

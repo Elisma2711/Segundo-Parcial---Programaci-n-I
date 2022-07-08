@@ -50,7 +50,7 @@
             $this -> Cuerpo = $fila['cuerpo'];
             $this -> BajaLogica = $fila['bajaLogica'];
         }
-        // Esta funcion en realidad se le haria un overray con modify ya que debe hacer bajas logicas no fisicas sino se romperia todo
+        // Esta funcion en realidad se le haria un overray con modify ya que deberia hacer bajas logicas no fisicas sino se romperia todo
         public function Eliminar(){
             $sql = "DELETE FROM publicacion WHERE id = " . $this -> Id;
             $this -> conexionBaseDeDatos -> query($sql);
@@ -71,5 +71,21 @@
                 array_push($resultado,$p);
             }
             return $resultado;
+        }
+
+        public function ObtenerUltima($usr){
+            $sql = "SELECT MAX(id) FROM publicacion 
+            WHERE bajaLogica = 0 
+            AND autor = '" . $usr . "' 
+            GROUP BY autor;";
+            $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            
+            $this -> Id = $fila['id'];
+            $this -> Autor = $fila['autor'];
+            $this -> FechaHora = $fila['fechaHora'];
+            $this -> Cuerpo = $fila['cuerpo'];
+            $this -> BajaLogica = $fila['bajaLogica'];
+
+            return $this;
         }
     }

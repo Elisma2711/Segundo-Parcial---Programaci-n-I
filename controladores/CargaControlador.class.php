@@ -3,11 +3,11 @@
 
     class CargaControlador {
         public static function Alta($context){
-            $filasUsuario = UsuarioControlador::ObtenerPorUsername($context['session']['nombreUsuario']);
-            PublicacionControlador::Alta($context);
-            $c = new CargaModelo($context['post']['id']);
-            $c -> IdUsuario = $filasUsuario[0]['id'];
-            $c -> IdPublicacion = $context['post']['id'];
+            $usuario = UsuarioControlador::ObtenerPorUsername($_SESSION['nombreUsuario']);
+            $publicacion = PublicacionControlador::ObtenerUltima($_SESSION['nombreUsuario']);
+            $c = new CargaModelo();
+            $c -> IdUsuario = $usuario -> Id;
+            $c -> IdPublicacion = $publicacion -> Id;
             $c -> Guardar();
         }
 

@@ -54,7 +54,7 @@ require "../utils/autoload.php";
             $this -> Complete_Name = $fila['complete_name'];
             $this -> BajaLogica = $fila['bajaLogica'];
         }
-        // Esta funcion en realidad se le haria un overray con modify ya que debe hacer bajas logicas no fisicas
+        // Esta funcion en realidad se le haria un overray con modify ya que deberia hacer bajas logicas no fisicas
         public function Eliminar(){
             $sql = "DELETE FROM usuario WHERE id = " . $this -> Id;
             $this -> conexionBaseDeDatos -> query($sql);
@@ -94,18 +94,14 @@ require "../utils/autoload.php";
         }
 
         public function ObtenerPorUsername($usr){
-            $sql = "SELECT * FROM usuario WHERE username = " . $usr . ";";
-            $filas = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+            $sql = "SELECT * FROM usuario WHERE username = '" . $usr . "';";
+            $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
-            $resultado = array();
-            foreach($filas as $fila){
-                $u = new UsuarioModelo();
-                $u -> Id = $fila['id'];
-                $u -> Nombre = $fila['username'];
-                $u -> Complete_Name = $fila['complete_name'];
-                $u -> BajaLogica = $fila['bajaLogica'];
-                array_push($resultado,$u);
-            }
-            return $resultado;
+            $this -> Id = $fila['id'];
+            $this -> Nombre = $fila['username'];
+            $this -> Complete_Name = $fila['complete_name'];
+            $this -> BajaLogica = $fila['bajaLogica'];
+
+            return $this;
         }
     }

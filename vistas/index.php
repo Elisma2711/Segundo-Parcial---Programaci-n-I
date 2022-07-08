@@ -31,11 +31,12 @@
                 $filas = PublicacionControlador::ObtenerTodos();
                 foreach($filas as $fila){
                     $c = 0;
+                    $publicacion = PublicacionControlador::Obtener($fila[$c] -> Id);
                     ?>
                     <tr>
-                        <th><?php echo PublicacionControlador::Obtener($fila[$c] -> Id) -> Cuerpo; ?></th>
-                        <th><?php echo PublicacionControlador::Obtener($fila[$c] -> Id) -> Autor; ?></th>
-                        <th><?php echo PublicacionControlador::Obtener($fila[$c] -> Id) -> FechaHora; ?></th>
+                        <th><?php echo $publicacion -> Cuerpo; ?></th>
+                        <th><?php echo $publicacion -> Autor; ?></th>
+                        <th><?php echo $publicacion -> FechaHora; ?></th>
                     </tr>
             <?php $c++; } ?>
         </table>

@@ -9,9 +9,10 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <form action="/cargarPublicacion" methot="post">
+        <form action="/cargarPublicacion" method="post">
             Ingrese su publicación: <input type="text" name="cuerpo">
-            <a href="/"><input type="submit" value="Enviar"></a>
+            <?php $_SESSION['nombreUsuario']; ?>
+            <input type="submit" value="Enviar">
         </form>
     </body>
 </html>

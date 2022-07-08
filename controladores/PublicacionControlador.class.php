@@ -36,4 +36,9 @@
             $p = new PublicacionModelo($id);
             return $p;
         }
+
+        public static function ObtenerUltima($usr){
+            $p = new PublicacionModelo();
+            return $p -> ObtenerUltima($usr);
+        }
     }
