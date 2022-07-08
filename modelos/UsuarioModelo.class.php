@@ -7,7 +7,7 @@ require "../utils/autoload.php";
         public $Nombre;
         public $Complete_Name;
         public $Password;
-        
+        public $BajaLogica;
 
         public function __construct($id=""){
             parent::__construct();
@@ -40,6 +40,7 @@ require "../utils/autoload.php";
             username = '" . $this -> Nombre . "',
             complete_name = '" . $this -> Complete_Name . "',
             password = '" . $this -> Password . "'
+            bajaLogica = " . $this -> BajaLogica . "
             WHERE id = " . $this -> id;
             $this -> conexionBaseDeDatos -> query($sql);
         }
@@ -51,10 +52,11 @@ require "../utils/autoload.php";
             $this -> Id = $fila['id'];
             $this -> Nombre = $fila['username'];
             $this -> Complete_Name = $fila['complete_name'];
+            $this -> BajaLogica = $fila['bajaLogica'];
         }
 
         public function Eliminar(){
-            $sql = "DELETE FROM usuario WHERE id = " . $this ->Id;
+            $sql = "UPDATE usuario SET bajaLogica = 1 WHERE id = " . $this ->Id;
             $this -> conexionBaseDeDatos -> query($sql);
         }
 
@@ -68,13 +70,16 @@ require "../utils/autoload.php";
                 $p -> Id = $fila['id'];
                 $p -> Nombre = $fila['username'];
                 $p -> Complete_Name = $fila['complete_name'];
+                $p -> BajaLogica = $fila['bajaLogica'];
                 array_push($resultado,$p);
             }
             return $resultado;
         }
 
         public function Autenticar(){
-            $sql = "SELECT * FROM usuario WHERE username = '" . $this -> Nombre . "'";
+            $sql = "SELECT * FROM usuario WHERE 
+            username = '" . $this -> Nombre . "'
+            AND bajaLogica = 0;";
             $resultado = $this -> conexionBaseDeDatos -> query($sql);
             if($resultado -> num_rows == 0) {
                 return false;

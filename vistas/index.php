@@ -14,10 +14,12 @@
     </head>
     <body>
         <header>
-            <a href="/login"><input type="submit" value="Iniciar Sesión"></a>
+            <a href="/sesion">Sesión</a>
         </header>
+        <br />
+        <br />
         <?php
-            echo UsuarioControlador::ObtenerTodos();
+            print_r(UsuarioControlador::ObtenerTodos());
         ?>
     </body>
 </html>
