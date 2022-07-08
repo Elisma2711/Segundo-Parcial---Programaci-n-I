@@ -17,7 +17,7 @@
             <a href="/login"><input type="submit" value="Iniciar Sesión"></a>
         </header>
         <?php
-            pg_fetch_array(UsuarioControlador::ObtenerTodos());
+            echo UsuarioControlador::ObtenerTodos();
         ?>
     </body>
 </html>

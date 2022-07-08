@@ -5,3 +5,21 @@ CREATE TABLE usuario(
     password varchar(255)
 );
 
+CREATE TABLE publicacion(
+    id int primary key auto_increment,
+    autor varchar(50),
+    fechaHora datetime,
+    cuerpo varchar(255),
+
+    FOREIGN KEY (autor) REFERENCES usuario(username)
+);
+
+
+CREATE TABLE carga(
+    idUsuario int,
+    idPublicacion int primary key,
+
+    FOREIGN KEY (idUsuario) REFERENCES usuario(id),
+    FOREIGN KEY (idPublicacion) REFERENCES publicacion(id)
+
+);
